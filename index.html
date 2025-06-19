@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuan Nita Fashion - Butik Fashion Elegan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --primary: #f8c3cd;
+            --secondary: #d8a1aa;
+            --accent: #e75480;
+            --text: #5a3d3d;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background-color: #fff9fa;
+            overflow-x: hidden;
+        }
+        
+        .header-bg {
+            background: linear-gradient(135deg, rgba(255,245,247,0.9) 0%, rgba(255,245,247,0.9) 100%), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="%23f8c3cd" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            background: linear-gradient(to right, #e75480, #d8a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 84, 128, 0.1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(231, 84, 128, 0.2);
+        }
+        
+        .price-tag {
+            background: linear-gradient(to right, #f8c3cd, #e75480);
+            color: white;
+        }
+        
+        .petal {
+            position: absolute;
+            background: rgba(255,255,255,0.7);
+            border-radius: 150% 0 150% 0;
+            animation: falling linear infinite;
+        }
+        
+        @keyframes falling {
+            0% {
+                top: -10%;
+                transform: rotate(0deg);
+            }
+            100% {
+                top: 100%;
+                transform: rotate(360deg);
+            }
+        }
+        
+        .testimonial-card {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-top: 3px solid var(--accent);
+        }
+        
+        .chat-button {
+            background: linear-gradient(to right, #25D366, #128C7E);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Floating Petals Background -->
+    <div id="petals-container" class="fixed inset-0 overflow-hidden pointer-events-none z-0"></div>
+    
+    <!-- Header Section -->
+    <header class="header-bg py-6 px-4 md:px-12 lg:px-24 relative z-10">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="logo text-3xl md:text-4xl mb-4 md:mb-0">Yuan Nita Fashion</div>
+            <nav class="flex space-x-6 md:space-x-8">
+                <a href="#home" class="nav-link text-lg font-medium text-pink-700 hover:text-pink-900 transition">Beranda</a>
+                <a href="#products" class="nav-link text-lg font-medium text-pink-700 hover:text-pink-900 transition">Katalog</a>
+                <a href="#about" class="nav-link text-lg font-medium text-pink-700 hover:text-pink-900 transition">Tentang Kami</a>
+                <a href="#contact" class="nav-link text-lg font-medium text-pink-700 hover:text-pink-900 transition">Hubungi</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative py-20 px-4 md:px-12 lg:px-24 flex flex-col md:flex-row items-center justify-between bg-gradient-to-r from-pink-50 to-pink-100">
+        <div class="md:w-1/2 mb-10 md:mb-0">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-pink-800 mb-6">Koleksi Eksklusif <span class="text-pink-600">Musim Ini</span></h1>
+            <p class="text-lg text-pink-700 mb-8">Temukan gaya elegan yang mencerminkan kepribadian Anda dengan koleksi terbaru dari Yuan Nita Fashion.</p>
+            <a href="#products" class="bg-pink-600 hover:bg-pink-700 text-white font-medium py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 inline-block shadow-lg">Lihat Koleksi</a>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+            <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                 alt="Model Fashion" 
+                 class="rounded-lg shadow-2xl w-full max-w-md floating">
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 px-4 md:px-12 lg:px-24 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-pink-800 mb-12">Koleksi Terbaru Kami</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-xl overflow-hidden transition duration-300">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" 
+                             alt="Dress Floral" 
+                             class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute bottom-4 right-4 price-tag px-4 py-2 rounded-full text-white font-bold">
+                            Rp 450.000
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-pink-800 mb-2">Dress Floral Elegan</h3>
+                        <p class="text-gray-600 mb-4">Dress dengan motif bunga yang cocok untuk berbagai acara.</p>
+                        <button class="w-full bg-pink-100 hover:bg-pink-200 text-pink-800 font-medium py-2 px-4 rounded-full transition duration-300">
+                            Lihat Detail
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-xl overflow-hidden transition duration-300">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                             alt="Blouse Silk" 
+                             class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute bottom-4 right-4 price-tag px-4 py-2 rounded-full text-white font-bold">
+                            Rp 350.000
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-pink-800 mb-2">Blouse Silk Premium</h3>
+                        <p class="text-gray-600 mb-4">Blouse berbahan silk premium dengan potongan modern.</p>
+                        <button class="w-full bg-pink-100 hover:bg-pink-200 text-pink-800 font-medium py-2 px-4 rounded-full transition duration-300">
+                            Lihat Detail
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-xl overflow-hidden transition duration-300">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                             alt="Tunik Modern" 
+                             class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute bottom-4 right-4 price-tag px-4 py-2 rounded-full text-white font-bold">
+                            Rp 380.000
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-pink-800 mb-2">Tunik Modern</h3>
+                        <p class="text-gray-600 mb-4">Tunik dengan desain modern dan nyaman dipakai sehari-hari.</p>
+                        <button class="w-full bg-pink-100 hover:bg-pink-200 text-pink-800 font-medium py-2 px-4 rounded-full transition duration-300">
+                            Lihat Detail
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white font-medium py-3 px-8 rounded-full transition duration-300">
+                    Lihat Semua Produk
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 md:px-12 lg:px-24 bg-pink-50 parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');">
+        <div class="container mx-auto bg-white bg-opacity-90 backdrop-blur-sm rounded-xl p-8 md:p-12 max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-pink-800 mb-8">Tentang Yuan Nita Fashion</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-pink-700 mb-4">Sejarah Kami</h3>
+                    <p class="text-gray-700 mb-6">Yuan Nita Fashion didirikan pada tahun 2015 dengan visi untuk menyediakan pakaian berkualitas tinggi dengan desain eksklusif untuk wanita modern. Dari sebuah butik kecil, kami telah berkembang menjadi merek fashion yang diakui.</p>
+                    
+                    <h3 class="text-xl font-semibold text-pink-700 mb-4">Visi</h3>
+                    <p class="text-gray-700">Menjadi destinasi utama fashion wanita yang menawarkan kualitas terbaik dengan sentuhan personal yang elegan.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold text-pink-700 mb-4">Misi</h3>
+                    <ul class="list-disc pl-5 text-gray-700 mb-6 space-y-2">
+                        <li>Menyediakan produk fashion berkualitas tinggi dengan bahan premium</li>
+                        <li>Menawarkan desain eksklusif yang mengikuti tren namun tetap timeless</li>
+                        <li>Memberikan pengalaman berbelanja yang personal dan memuaskan</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-semibold text-pink-700 mb-4">Keunggulan</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm">Bahan Premium</span>
+                        <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm">Desain Eksklusif</span>
+                        <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm">Jahitan Rapih</span>
+                        <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm">Ramah Lingkungan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 px-4 md:px-12 lg:px-24 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-pink-800 mb-12">Apa Kata Pelanggan Kami</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Pelanggan" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-pink-800">Sarah Wijaya</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Saya sangat puas dengan kualitas dress yang saya beli. Bahannya nyaman dan desainnya sangat elegan. Pelayanannya juga ramah dan profesional."</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Pelanggan" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-pink-800">Dewi Lestari</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Blouse dari Yuan Nita Fashion selalu menjadi favorit saya. Potongannya sangat pas di badan dan bahannya adem. Sudah beli beberapa kali dan tidak pernah kecewa."</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Pelanggan" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-pink-800">Rina Hartono</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Pengalaman berbelanja yang menyenangkan. Stafnya membantu memilihkan model yang cocok untuk bentuk tubuh saya. Produknya berkualitas dan harganya reasonable."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-4 md:px-12 lg:px-24 bg-pink-50">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-pink-800 mb-12">Hubungi Kami</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-pink-700 mb-4">Informasi Kontak</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-pink-600 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-medium text-pink-800">Alamat</h4>
+                                <p class="text-gray-700">Jl. Kemang Raya No. 12, Jakarta Selatan 12730</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-phone-alt text-pink-600 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-medium text-pink-800">Telepon</h4>
+                                <p class="text-gray-700">(021) 1234-5678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fab fa-whatsapp text-pink-600 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-medium text-pink-800">WhatsApp</h4>
+                                <p class="text-gray-700">0812-3456-7890</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope text-pink-600 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-medium text-pink-800">Email</h4>
+                                <p class="text-gray-700">info@yuannitafashion.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold text-pink-700 mt-8 mb-4">Jam Operasional</h3>
+                    <div class="space-y-2">
+                        <p class="text-gray-700"><span class="font-medium">Senin-Jumat:</span> 10:00 - 20:00</p>
+                        <p class="text-gray-700"><span class="font-medium">Sabtu-Minggu:</span> 09:00 - 21:00</p>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold text-pink-700 mt-8 mb-4">Media Sosial</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold text-pink-700 mb-4">Kirim Pesan</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-pink-800 mb-1">Nama Lengkap</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-pink-200 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-pink-800 mb-1">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-pink-200 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500">
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-pink-800 mb-1">Nomor Telepon</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-pink-200 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-pink-800 mb-1">Pesan</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-pink-200 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300">
+                            Kirim Pesan
+                        </button>
+                    </form>
+                    
+                    <div class="mt-8 text-center">
+                        <a href="https://wa.me/6281234567890" class="chat-button text-white font-medium py-3 px-6 rounded-full inline-flex items-center transition duration-300">
+                            <i class="fab fa-whatsapp mr-2 text-xl"></i> Chat via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-pink-800 text-white py-12 px-4 md:px-12 lg:px-24">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Yuan Nita Fashion</h3>
+                    <p class="text-pink-200">Butik fashion eksklusif untuk wanita modern dengan desain elegan dan bahan berkualitas tinggi.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Navigasi</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-pink-200 hover:text-white transition">Beranda</a></li>
+                        <li><a href="#products" class="text-pink-200 hover:text-white transition">Katalog</a></li>
+                        <li><a href="#about" class="text-pink-200 hover:text-white transition">Tentang Kami</a></li>
+                        <li><a href="#contact" class="text-pink-200 hover:text-white transition">Hubungi</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Layanan</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-pink-200 hover:text-white transition">Custom Design</a></li>
+                        <li><a href="#" class="text-pink-200 hover:text-white transition">Pemesanan Online</a></li>
+                        <li><a href="#" class="text-pink-200 hover:text-white transition">Pengembalian</a></li>
+                        <li><a href="#" class="text-pink-200 hover:text-white transition">Ukuran Khusus</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+                    <p class="text-pink-200 mb-4">Dapatkan update koleksi terbaru dan promo spesial.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Email Anda" class="px-4 py-2 rounded-l-lg w-full text-gray-800">
+                        <button type="submit" class="bg-pink-600 hover:bg-pink-700 px-4 py-2 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-pink-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-pink-300 text-sm mb-4 md:mb-0">&copy; 2023 Yuan Nita Fashion. All Rights Reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-pink-300 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-pink-300 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-pink-300 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="text-pink-300 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6281234567890" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center text-2xl shadow-lg hover:bg-green-600 transition z-50">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Create floating petals
+        function createPetals() {
+            const container = document.getElementById('petals-container');
+            const petalCount = 15;
+            
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.classList.add('petal');
+                
+                // Random size
+                const size = Math.random() * 15 + 5;
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size}px`;
+                
+                // Random position
+                petal.style.left = `${Math.random() * 100}%`;
+                
+                // Random animation duration
+                const duration = Math.random() * 10 + 5;
+                petal.style.animationDuration = `${duration}s`;
+                
+                // Random delay
+                petal.style.animationDelay = `${Math.random() * 5}s`;
+                
+                // Random opacity
+                petal.style.opacity = Math.random() * 0.5 + 0.3;
+                
+                container.appendChild(petal);
+            }
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            createPetals();
+            
+            // Add scroll animation to elements
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.product-card, .testimonial-card');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementPosition < windowHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Set initial state
+            document.querySelectorAll('.product-card, .testimonial-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Run once on load
+        });
+    </script>
+</body>
+</html>
